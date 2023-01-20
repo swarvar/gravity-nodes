@@ -1,0 +1,26 @@
+diff --git a/node_modules/react-scripts/scripts/utils/verifyTypeScriptSetup.js b/node_modules/react-scripts/scripts/utils/verifyTypeScriptSetup.js
+index 00139ee..5495db5 100644
+--- a/node_modules/react-scripts/scripts/utils/verifyTypeScriptSetup.js
++++ b/node_modules/react-scripts/scripts/utils/verifyTypeScriptSetup.js
+@@ -184,14 +184,13 @@ function verifyTypeScriptSetup() {
+     // Get TS to parse and resolve any "extends"
+     // Calling this function also mutates the tsconfig above,
+     // adding in "include" and "exclude", but the compilerOptions remain untouched
+-    let result;
+-    parsedTsConfig = immer(readTsConfig, config => {
+-      result = ts.parseJsonConfigFileContent(
+-        config,
+-        ts.sys,
+-        path.dirname(paths.appTsConfig)
+-      );
+-    });
++    parsedTsConfig = {...readTsConfig};
++
++    const result = ts.parseJsonConfigFileContent(
++      parsedTsConfig,
++      ts.sys,
++      path.dirname(paths.appTsConfig)
++    );
+ 
+     if (result.errors && result.errors.length) {
+       throw new Error(
