@@ -1,4 +1,4 @@
-import { Suspense, useRef } from "react";
+import { Suspense, useRef, useState } from "react";
 import { Canvas, useFrame, useLoader } from "react-three-fiber";
 import { Stats, OrbitControls, Text } from "@react-three/drei";
 import * as three from "three";
@@ -11,16 +11,28 @@ function randomNumber(min: number, max: number) {
 function Node(props: any) {
   const position = props.position
   const title = props.title
+
+  const [nodeColor, setNodeColor] = useState('white')
+
+  function onPointerOverNode(){
+    setNodeColor('hotpink')
+  }
+
+  function onPointerOutNode(){
+    setNodeColor('white')
+  }
+
   return (
-    <mesh position={position}>
-      <meshBasicMaterial />
+    <mesh position={position} onPointerOver={onPointerOverNode} onPointerOut={onPointerOutNode}>
+      <meshBasicMaterial color={nodeColor} />
       <sphereGeometry args={[0.16, 30, 30]} />
       <Text
-        scale={[1, 1, 1]}
+        scale={[2, 2, 0]}
         color="white" // default
         anchorX="center" // default
         anchorY="middle" // default
-        position={position}
+        position={[0, -0.35, 0]}
+        // position={position}
       >
         {title}
       </Text>
