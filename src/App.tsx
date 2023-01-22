@@ -57,10 +57,6 @@ const App = () => {
     >
       <Canvas
         // orthographic
-        camera={{
-          // position: [0, 5, 0],
-          fov: 360,
-        }}
         onCreated={({ gl }) => {
           gl.setClearColor("#252934");
         }}
@@ -70,10 +66,16 @@ const App = () => {
         <Suspense fallback={null}>
           {nodes.map((node, i) => {
             const x = randomNumber(-2, 2)
-            const y = randomNumber(0, 4)
-            const position = [x ,y, -2]
+            const y = randomNumber(-2, 2)
+            const position = [x ,y, 0]
            return <Node key={i} title={`Node ${i+1}`} position={position} />
           })}
+
+          <Node title={`Node`} position={[-2, -3, 0]} />
+          <Node title={`Node`} position={[-1, -2.5, 0]} />
+          <Node title={`Node`} position={[2, 3, 0]} />
+          <Node title={`Node`} position={[4, 3, 0]} />
+
           {/* <Balls /> */}
           <Plane size={[200, 200]} />
         </Suspense>

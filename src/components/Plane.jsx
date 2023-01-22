@@ -5,8 +5,8 @@ import * as THREE from "three";
 export default function Plane({ size }) {
   const [ref] = useBox(() => ({
     args: [...size, -0.001],
-    rotation: [-Math.PI / 2, 0, 0],
-    position: [0, -5, 0],
+    rotation: [-Math.PI / 2, -Math.PI / 8, 0],
+    position: [0, -4, 0],
   }));
   return (
     <mesh ref={ref}>
