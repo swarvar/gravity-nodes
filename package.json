@@ -1,8 +1,8 @@
 {
-  "name": "react-three-fiber-typescript",
+  "name": "gravity-nodes",
   "author": "Swarup Suryawanshi <suryawanshiswarup@gmail.com> (https://github.com/swarvar)",
   "version": "1.0.0",
-  "description": "⚛🟦 react-three-fiber TypeScript starterpack",
+  "description": "nodes dropping on floor when disconnected",
   "keywords": [
     "react",
     "typescript",
