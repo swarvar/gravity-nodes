@@ -57,6 +57,9 @@ const App = () => {
     >
       <Canvas
         // orthographic
+        camera={
+          {position:[0, 12, 100]}
+        }
         onCreated={({ gl }) => {
           gl.setClearColor("#252934");
         }}
@@ -64,7 +67,7 @@ const App = () => {
         <Physics allowSleep broadphase="SAP" gravity={gravity} defaultContactMaterial={{ friction: 0.1, restitution: 0.1 }}>
         <ambientLight intensity={0.8} />
         <Suspense fallback={null}>
-          {nodes.map((node, i) => {
+          {/* {nodes.map((node, i) => {
             const x = randomNumber(-2, 2)
             const y = randomNumber(-2, 2)
             const position = [x ,y, 0]
@@ -74,9 +77,9 @@ const App = () => {
           <Node title={`Node`} position={[-2, -3, 0]} />
           <Node title={`Node`} position={[-1, -2.5, 0]} />
           <Node title={`Node`} position={[2, 3, 0]} />
-          <Node title={`Node`} position={[4, 3, 0]} />
+          <Node title={`Node`} position={[4, 3, 0]} /> */}
 
-          {/* <Balls /> */}
+          <Balls />
           <Plane size={[200, 200]} />
         </Suspense>
         </Physics>

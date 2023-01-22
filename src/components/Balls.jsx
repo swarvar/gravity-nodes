@@ -8,13 +8,9 @@ const palette = palettes[Math.floor(Math.random() * (palettes.length - 1))];
 
 function generateRandomBall() {
   return {
-    position: [
-      (0.5 - Math.random()) * 50,
-      20 + (0.5 - Math.random()) * 50,
-      (0.5 - Math.random()) * 50,
-    ],
-    color: palette[Math.floor(Math.random() * (palette.length - 1))],
-    radius: Math.random() * 5,
+    position: [0, 20, 0],
+    color: "white",
+    radius: 1.6,
   };
 }
 
@@ -25,12 +21,11 @@ export default function Balls() {
   const addRandomBall = () =>
     setBalls((currBalls) => [...currBalls, generateRandomBall()]);
   const { flood } = useControls({
-    addBall: button(addRandomBall),
-    flood: false,
+    "Add Ball": button(addRandomBall),
   });
   useFrame(({ clock }) => {
     const elapsedTime = clock.getElapsedTime();
-    if (flood && Math.floor(elapsedTime * 10) % 2 === 0) addRandomBall();
+    // if (flood && Math.floor(elapsedTime * 10) % 2 === 0) addRandomBall();
   });
   return balls.map((ballInfo, i) => <Ball key={i} {...ballInfo} />);
 }
